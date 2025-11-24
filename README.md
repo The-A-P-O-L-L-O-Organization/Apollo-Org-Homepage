@@ -70,7 +70,7 @@ This repository is open-source and available under the [MIT License](LICENSE).
 ## 🌐 Links
 
 - **GitHub Organization:** [The-A-P-O-L-L-O-Organization](https://github.com/The-A-P-O-L-L-O-Organization)
-- **Homepage:** [Live Site (if deployed)](#)
+- **Homepage:** [Live Site (if deployed)](https://the-a-p-o-l-l-o-organization.github.io/Apollo-Org-Homepage/)
 - **Contact:** See organization profile for details
 
 ---
