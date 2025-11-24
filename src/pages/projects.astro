@@ -1,72 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-// Static list of public repositories (fallback if API fails)
-const staticRepos = [
-  {
-    name: 'Apollo-Org-Homepage',
-    description: 'Organization homepage built with Astro',
-    html_url: 'https://github.com/The-A-P-O-L-L-O-Organization/Apollo-Org-Homepage',
-    language: 'Astro',
-    stargazers_count: 0,
-    forks_count: 0,
-    updated_at: new Date().toISOString(),
-    archived: false
-  },
-  {
-    name: 'Nova-Discord-Bot',
-    description: 'A Discord bot built with Python',
-    html_url: 'https://github.com/The-A-P-O-L-L-O-Organization/Nova-Discord-Bot',
-    language: 'Python',
-    stargazers_count: 0,
-    forks_count: 0,
-    updated_at: '2024-10-10T00:00:00Z',
-    archived: false
-  },
-  {
-    name: '.github',
-    description: 'GitHub organization configuration',
-    html_url: 'https://github.com/The-A-P-O-L-L-O-Organization/.github',
-    language: null,
-    stargazers_count: 0,
-    forks_count: 0,
-    updated_at: '2024-09-19T00:00:00Z',
-    archived: false
-  },
-  {
-    name: 'John-Discord-Bot',
-    description: 'Another Discord bot project',
-    html_url: 'https://github.com/The-A-P-O-L-L-O-Organization/John-Discord-Bot',
-    language: 'Python',
-    stargazers_count: 0,
-    forks_count: 0,
-    updated_at: '2024-08-31T00:00:00Z',
-    archived: false
-  },
-  {
-    name: 'KTHack25',
-    description: 'Project for KT Hack 2025',
-    html_url: 'https://github.com/The-A-P-O-L-L-O-Organization/KTHack25',
-    language: 'kvlang',
-    stargazers_count: 0,
-    forks_count: 0,
-    updated_at: '2024-06-07T00:00:00Z',
-    archived: false
-  },
-  {
-    name: 'Potato',
-    description: 'If you fork this then you can say you forked a potato.',
-    html_url: 'https://github.com/The-A-P-O-L-L-O-Organization/Potato',
-    language: 'Java',
-    stargazers_count: 2700,
-    forks_count: 0,
-    updated_at: '2024-11-21T00:00:00Z',
-    archived: false
-  }
-];
-
 // Fetch GitHub repositories for The A.P.O.L.L.O. Organization
-let activeRepos = staticRepos;
+let activeRepos = [];
 try {
   const response = await fetch('https://api.github.com/orgs/The-A-P-O-L-L-O-Organization/repos?sort=updated&per_page=20');
   if (response.ok) {
