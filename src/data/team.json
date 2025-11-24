@@ -1,21 +1,21 @@
 [
   {
-    "id": "codmaster013",
+    "id": "CodeMaster013",
     "name": "CodeMaster013",
     "role": "Founder & Developer",
     "bio": "Passionate about coding, learning new technologies, and building fun projects with friends.",
-    "avatar": "https://avatars.githubusercontent.com/u/CodeMaster013?v=4",
+    "avatar": "https://avatars.githubusercontent.com/CodeMaster013?v=4",
     "social": {
       "github": "https://github.com/CodeMaster013"
     },
     "team": "Core"
   },
   {
-    "id": "hellodaw",
+    "id": "HELLoDAW",
     "name": "HELLoDAW",
     "role": "Developer",
     "bio": "Enthusiastic coder who loves experimenting with code and collaborating on open-source adventures.",
-    "avatar": "https://avatars.githubusercontent.com/u/HELLoDAW?v=4",
+    "avatar": "https://avatars.githubusercontent.com/HELLoDAW?v=4",
     "social": {
       "github": "https://github.com/HELLoDAW"
     },
