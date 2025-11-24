@@ -1,0 +1,221 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+// Fetch GitHub repositories for The A.P.O.L.L.O. Organization
+const response = await fetch('https://api.github.com/orgs/The-A.P.O.L.L.O.-Organization/repos?sort=updated&per_page=20');
+const repos = await response.json();
+
+// Filter out archived repos and sort by stars
+const activeRepos = (Array.isArray(repos) ? repos.filter(repo => !repo.archived) : []).sort((a, b) => b.stargazers_count - a.stargazers_count);
+---
+
+<Layout>
+	<section id="projects-hero">
+		<div class="container">
+			<h1>Our Projects</h1>
+			<p>Explore our open-source repositories and contribute to cutting-edge technology.</p>
+		</div>
+	</section>
+
+	<section id="projects-list">
+		<div class="container">
+			<div class="filters">
+				<label for="language-filter">Filter by Language:</label>
+				<select id="language-filter">
+					<option value="">All Languages</option>
+					<option value="JavaScript">JavaScript</option>
+					<option value="Python">Python</option>
+					<option value="TypeScript">TypeScript</option>
+					<option value="Rust">Rust</option>
+					<option value="Go">Go</option>
+				</select>
+				<label for="sort-filter">Sort by:</label>
+				<select id="sort-filter">
+					<option value="stars">Stars</option>
+					<option value="updated">Recently Updated</option>
+					<option value="name">Name</option>
+				</select>
+			</div>
+
+			<div class="projects-grid" id="projects-grid">
+				{activeRepos.map(repo => (
+					<div class="project-card" data-language={repo.language} data-stars={repo.stargazers_count} data-updated={repo.updated_at}>
+						<h3><a href={repo.html_url} target="_blank" rel="noopener">{repo.name}</a></h3>
+						<p>{repo.description || 'No description available.'}</p>
+						<div class="project-meta">
+							<span class="language">{repo.language || 'Unknown'}</span>
+							<span class="stars">⭐ {repo.stargazers_count}</span>
+							<span class="forks">🍴 {repo.forks_count}</span>
+						</div>
+						<p class="updated">Updated {new Date(repo.updated_at).toLocaleDateString()}</p>
+					</div>
+				))}
+			</div>
+		</div>
+	</section>
+</Layout>
+
+<script>
+	document.addEventListener('DOMContentLoaded', () => {
+		const languageFilter = document.getElementById('language-filter');
+		const sortFilter = document.getElementById('sort-filter');
+		const projectsGrid = document.getElementById('projects-grid');
+		const projectCards = Array.from(projectsGrid.children);
+
+		function filterAndSort() {
+			const selectedLanguage = languageFilter.value;
+			const selectedSort = sortFilter.value;
+
+			let filtered = projectCards;
+
+			if (selectedLanguage) {
+				filtered = projectCards.filter(card => card.dataset.language === selectedLanguage);
+			}
+
+			filtered.sort((a, b) => {
+				switch (selectedSort) {
+					case 'stars':
+						return parseInt(b.dataset.stars) - parseInt(a.dataset.stars);
+					case 'updated':
+						return new Date(b.dataset.updated) - new Date(a.dataset.updated);
+					case 'name':
+						return a.querySelector('h3 a').textContent.localeCompare(b.querySelector('h3 a').textContent);
+					default:
+						return 0;
+				}
+			});
+
+			// Hide all cards
+			projectCards.forEach(card => card.style.display = 'none');
+			// Show filtered and sorted cards
+			filtered.forEach(card => card.style.display = 'block');
+
+			// Reorder in DOM
+			filtered.forEach(card => projectsGrid.appendChild(card));
+		}
+
+		languageFilter.addEventListener('change', filterAndSort);
+		sortFilter.addEventListener('change', filterAndSort);
+	});
+</script>
+
+<style>
+	#projects-hero {
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		color: white;
+		padding: 4rem 0;
+		text-align: center;
+	}
+
+	#projects-hero .container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 1rem;
+	}
+
+	#projects-hero h1 {
+		font-size: 3rem;
+		margin: 0 0 1rem 0;
+	}
+
+	#projects-hero p {
+		font-size: 1.25rem;
+		margin: 0;
+	}
+
+	#projects-list {
+		padding: 4rem 0;
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 1rem;
+	}
+
+	.filters {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+		margin-bottom: 2rem;
+		flex-wrap: wrap;
+	}
+
+	.filters label {
+		font-weight: 600;
+		color: #374151;
+	}
+
+	.filters select {
+		padding: 0.5rem;
+		border: 1px solid #d1d5db;
+		border-radius: 0.25rem;
+		background: white;
+	}
+
+	.projects-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+		gap: 2rem;
+	}
+
+	.project-card {
+		background: white;
+		padding: 1.5rem;
+		border-radius: 0.5rem;
+		box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+		transition: transform 0.3s, box-shadow 0.3s;
+	}
+
+	.project-card:hover {
+		transform: translateY(-5px);
+		box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+	}
+
+	.project-card h3 {
+		margin: 0 0 1rem 0;
+		font-size: 1.25rem;
+	}
+
+	.project-card h3 a {
+		color: #111827;
+		text-decoration: none;
+	}
+
+	.project-card h3 a:hover {
+		color: #2563eb;
+	}
+
+	.project-card p {
+		color: #4b5563;
+		margin: 0 0 1rem 0;
+		line-height: 1.6;
+	}
+
+	.project-meta {
+		display: flex;
+		gap: 1rem;
+		margin-bottom: 1rem;
+		font-size: 0.875rem;
+		color: #6b7280;
+	}
+
+	.updated {
+		font-size: 0.875rem;
+		color: #6b7280;
+		margin: 0;
+	}
+
+	@media (max-width: 768px) {
+		#projects-hero h1 {
+			font-size: 2rem;
+		}
+		.filters {
+			flex-direction: column;
+			align-items: center;
+		}
+		.projects-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

@@ -1,0 +1,217 @@
+---
+import Layout from '../layouts/Layout.astro';
+import teamData from '../data/team.json';
+
+const team = teamData;
+const roles = [...new Set(team.map(member => member.role))];
+const teams = [...new Set(team.map(member => member.team))];
+---
+
+<Layout>
+  <section id="team-hero">
+    <div class="container">
+      <h1>Our Team</h1>
+      <p>Meet the dedicated individuals driving our mission forward.</p>
+    </div>
+  </section>
+
+  <section id="team-list">
+    <div class="container">
+      <div class="filters">
+        <input type="text" id="search-input" placeholder="Search team members...">
+        <select id="role-filter">
+          <option value="">All Roles</option>
+          {roles.map(role => <option value={role}>{role}</option>)}
+        </select>
+        <select id="team-filter">
+          <option value="">All Teams</option>
+          {teams.map(teamName => <option value={teamName}>{teamName}</option>)}
+        </select>
+      </div>
+
+      <div class="team-grid" id="team-grid">
+        {team.map(member => (
+          <div class="team-card" data-role={member.role} data-team={member.team} data-name={member.name.toLowerCase()}>
+            <img src={member.avatar} alt={member.name} class="avatar">
+            <h3><a href={`/team/${member.id}`}>{member.name}</a></h3>
+            <p class="role">{member.role}</p>
+            <p class="bio">{member.bio}</p>
+            <div class="social-links">
+              {member.social.github && <a href={member.social.github} target="_blank" rel="noopener">GitHub</a>}
+              {member.social.twitter && <a href={member.social.twitter} target="_blank" rel="noopener">Twitter</a>}
+              {member.social.linkedin && <a href={member.social.linkedin} target="_blank" rel="noopener">LinkedIn</a>}
+              {member.social.dribbble && <a href={member.social.dribbble} target="_blank" rel="noopener">Dribbble</a>}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('search-input');
+    const roleFilter = document.getElementById('role-filter');
+    const teamFilter = document.getElementById('team-filter');
+    const teamGrid = document.getElementById('team-grid');
+    const teamCards = Array.from(teamGrid.children);
+
+    function filterTeam() {
+      const searchTerm = searchInput.value.toLowerCase();
+      const selectedRole = roleFilter.value;
+      const selectedTeam = teamFilter.value;
+
+      teamCards.forEach(card => {
+        const name = card.dataset.name;
+        const role = card.dataset.role;
+        const team = card.dataset.team;
+
+        const matchesSearch = name.includes(searchTerm);
+        const matchesRole = !selectedRole || role === selectedRole;
+        const matchesTeam = !selectedTeam || team === selectedTeam;
+
+        card.style.display = matchesSearch && matchesRole && matchesTeam ? 'block' : 'none';
+      });
+    }
+
+    searchInput.addEventListener('input', filterTeam);
+    roleFilter.addEventListener('change', filterTeam);
+    teamFilter.addEventListener('change', filterTeam);
+  });
+</script>
+
+<style>
+  #team-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  #team-hero .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  #team-hero h1 {
+    font-size: 3rem;
+    margin: 0 0 1rem 0;
+  }
+
+  #team-hero p {
+    font-size: 1.25rem;
+    margin: 0;
+  }
+
+  #team-list {
+    padding: 4rem 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .filters {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .filters input, .filters select {
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 0.25rem;
+    background: white;
+  }
+
+  .filters input {
+    min-width: 200px;
+  }
+
+  .team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .team-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s;
+  }
+
+  .team-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+  }
+
+  .team-card h3 {
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+  }
+
+  .team-card h3 a {
+    color: #111827;
+    text-decoration: none;
+  }
+
+  .team-card h3 a:hover {
+    color: #2563eb;
+  }
+
+  .role {
+    color: #2563eb;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+  }
+
+  .bio {
+    color: #4b5563;
+    margin: 0 0 1rem 0;
+    line-height: 1.6;
+  }
+
+  .social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .social-links a {
+    color: #6b7280;
+    text-decoration: none;
+    font-size: 0.875rem;
+  }
+
+  .social-links a:hover {
+    color: #2563eb;
+  }
+
+  @media (max-width: 768px) {
+    #team-hero h1 {
+      font-size: 2rem;
+    }
+    .filters {
+      flex-direction: column;
+      align-items: center;
+    }
+    .team-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

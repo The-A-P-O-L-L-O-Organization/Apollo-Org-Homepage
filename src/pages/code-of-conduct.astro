@@ -1,0 +1,89 @@
+---
+import Layout from '../layouts/Layout.astro';
+import coc from '../../CODE_OF_CONDUCT.md?raw';
+---
+
+<Layout>
+  <section id="code-of-conduct">
+    <div class="container">
+      <div class="markdown-content">
+        <div set:html={coc.replace(/^# .*$/m, '<h1>Code of Conduct</h1>')} />
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  #code-of-conduct {
+    padding: 4rem 0;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .markdown-content {
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  .markdown-content h1 {
+    font-size: 3rem;
+    margin: 0 0 2rem 0;
+    color: #111827;
+    text-align: center;
+  }
+
+  .markdown-content h2 {
+    font-size: 2rem;
+    margin: 2rem 0 1rem 0;
+    color: #111827;
+  }
+
+  .markdown-content h3 {
+    font-size: 1.5rem;
+    margin: 1.5rem 0 1rem 0;
+    color: #111827;
+  }
+
+  .markdown-content p {
+    margin-bottom: 1rem;
+  }
+
+  .markdown-content ul, .markdown-content ol {
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+  }
+
+  .markdown-content li {
+    margin-bottom: 0.5rem;
+  }
+
+  .markdown-content code {
+    background: #f3f4f6;
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.125rem;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  }
+
+  .markdown-content pre {
+    background: #f3f4f6;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  .markdown-content pre code {
+    background: none;
+    padding: 0;
+  }
+
+  @media (max-width: 768px) {
+    .markdown-content h1 {
+      font-size: 2rem;
+    }
+  }
+</style>

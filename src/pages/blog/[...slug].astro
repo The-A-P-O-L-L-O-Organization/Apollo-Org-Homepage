@@ -1,0 +1,138 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.slug },
+    props: { post }
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<Layout>
+  <article id="blog-post">
+    <div class="container">
+      {post.data.heroImage && <img src={post.data.heroImage} alt={post.data.title} class="hero-image">}
+      <header>
+        <h1>{post.data.title}</h1>
+        <div class="post-meta">
+          <span class="author">By {post.data.author}</span>
+          <span class="date">{post.data.pubDate.toLocaleDateString()}</span>
+          <span class="reading-time">5 min read</span>
+        </div>
+        <div class="tags">
+          {post.data.tags.map(tag => <span class="tag">{tag}</span>)}
+        </div>
+      </header>
+      <div class="content">
+        <Content />
+      </div>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  #blog-post {
+    padding: 4rem 0;
+  }
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .hero-image {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  header {
+    margin-bottom: 2rem;
+  }
+
+  h1 {
+    font-size: 3rem;
+    margin: 0 0 1rem 0;
+    color: #111827;
+  }
+
+  .post-meta {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    font-size: 1rem;
+    color: #6b7280;
+    flex-wrap: wrap;
+  }
+
+  .tags {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .tag {
+    background: #f3f4f6;
+    color: #374151;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.25rem;
+    font-size: 0.875rem;
+  }
+
+  .content {
+    line-height: 1.8;
+    color: #374151;
+  }
+
+  .content h2 {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #111827;
+  }
+
+  .content p {
+    margin-bottom: 1rem;
+  }
+
+  .content pre {
+    background: #f3f4f6;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+
+  .content code {
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    background: #f3f4f6;
+    padding: 0.125rem 0.25rem;
+    border-radius: 0.125rem;
+  }
+
+  .content pre code {
+    background: none;
+    padding: 0;
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      font-size: 2rem;
+    }
+    .post-meta {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .hero-image {
+      height: 250px;
+    }
+  }
+</style>

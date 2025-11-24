@@ -1,0 +1,134 @@
+---
+// Header component for navigation
+---
+
+<header id="header">
+  <div class="container">
+    <div class="logo">
+      <h1>A.P.O.L.L.O.</h1>
+    </div>
+    <nav class="nav-desktop">
+      <a href="/">Home</a>
+      <a href="/about">About</a>
+      <a href="/projects">Projects</a>
+      <a href="/team">Team</a>
+      <a href="/blog">Blog</a>
+      <a href="/docs">Docs</a>
+    </nav>
+    <button id="menu-toggle" class="menu-toggle">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+  <nav id="nav-mobile" class="nav-mobile">
+    <a href="/">Home</a>
+    <a href="/about">About</a>
+    <a href="/projects">Projects</a>
+    <a href="/team">Team</a>
+    <a href="/blog">Blog</a>
+    <a href="/docs">Docs</a>
+  </nav>
+</header>
+
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const navMobile = document.getElementById('nav-mobile');
+
+  menuToggle?.addEventListener('click', () => {
+    navMobile?.classList.toggle('open');
+  });
+</script>
+
+<style>
+  #header {
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  #header .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .logo h1 {
+    margin: 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #111827;
+  }
+
+  .nav-desktop {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-desktop a {
+    color: #374151;
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-desktop a:hover {
+    color: #2563eb;
+  }
+
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #374151;
+    margin: 3px 0;
+    transition: 0.3s;
+  }
+
+  .nav-mobile {
+    display: none;
+    background: white;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .nav-mobile a {
+    display: block;
+    padding: 1rem;
+    color: #374151;
+    text-decoration: none;
+    border-bottom: 1px solid #e5e7eb;
+  }
+
+  .nav-mobile a:hover {
+    background: #f9fafb;
+  }
+
+  @media (max-width: 768px) {
+    .nav-desktop {
+      display: none;
+    }
+    .menu-toggle {
+      display: flex;
+    }
+    .nav-mobile {
+      display: block;
+    }
+    .nav-mobile.open {
+      display: block;
+    }
+    .nav-mobile:not(.open) {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,39 @@
+[
+  {
+    "id": "john-doe",
+    "name": "John Doe",
+    "role": "Lead Developer",
+    "bio": "Experienced software engineer with a passion for open-source development and community building.",
+    "avatar": "https://avatars.githubusercontent.com/u/12345678?v=4",
+    "social": {
+      "github": "https://github.com/johndoe",
+      "twitter": "https://twitter.com/johndoe",
+      "linkedin": "https://linkedin.com/in/johndoe"
+    },
+    "team": "Core"
+  },
+  {
+    "id": "jane-smith",
+    "name": "Jane Smith",
+    "role": "Community Manager",
+    "bio": "Dedicated to fostering inclusive communities and helping newcomers get started with open-source.",
+    "avatar": "https://avatars.githubusercontent.com/u/87654321?v=4",
+    "social": {
+      "github": "https://github.com/janesmith",
+      "twitter": "https://twitter.com/janesmith"
+    },
+    "team": "Community"
+  },
+  {
+    "id": "alex-johnson",
+    "name": "Alex Johnson",
+    "role": "UI/UX Designer",
+    "bio": "Creative designer focused on user experience and accessibility in open-source projects.",
+    "avatar": "https://avatars.githubusercontent.com/u/11223344?v=4",
+    "social": {
+      "github": "https://github.com/alexjohnson",
+      "dribbble": "https://dribbble.com/alexjohnson"
+    },
+    "team": "Design"
+  }
+]

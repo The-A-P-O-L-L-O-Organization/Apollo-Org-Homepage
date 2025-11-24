@@ -1,0 +1,128 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <section id="docs-hero">
+    <div class="container">
+      <h1>Documentation</h1>
+      <p>Everything you need to know about contributing to A.P.O.L.L.O.</p>
+    </div>
+  </section>
+
+  <section id="docs-content">
+    <div class="container">
+      <div class="docs-grid">
+        <div class="doc-card">
+          <h2>Getting Started</h2>
+          <p>Learn how to set up your development environment and get started with contributing.</p>
+          <a href="/contributing" class="btn">Read Guide</a>
+        </div>
+        <div class="doc-card">
+          <h2>Code of Conduct</h2>
+          <p>Our community standards and guidelines for respectful collaboration.</p>
+          <a href="/code-of-conduct" class="btn">View Code</a>
+        </div>
+        <div class="doc-card">
+          <h2>Project Guidelines</h2>
+          <p>Best practices for contributing code, documentation, and more.</p>
+          <a href="/contributing#guidelines" class="btn">Learn More</a>
+        </div>
+        <div class="doc-card">
+          <h2>API Documentation</h2>
+          <p>Technical documentation for our projects and APIs.</p>
+          <a href="https://docs.apollo.org" target="_blank" rel="noopener" class="btn">External Docs</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  #docs-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 4rem 0;
+    text-align: center;
+  }
+
+  #docs-hero .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  #docs-hero h1 {
+    font-size: 3rem;
+    margin: 0 0 1rem 0;
+  }
+
+  #docs-hero p {
+    font-size: 1.25rem;
+    margin: 0;
+  }
+
+  #docs-content {
+    padding: 4rem 0;
+  }
+
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+  }
+
+  .docs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+
+  .doc-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    text-align: center;
+    transition: transform 0.3s;
+  }
+
+  .doc-card:hover {
+    transform: translateY(-5px);
+  }
+
+  .doc-card h2 {
+    margin: 0 0 1rem 0;
+    color: #111827;
+  }
+
+  .doc-card p {
+    color: #4b5563;
+    margin: 0 0 1.5rem 0;
+    line-height: 1.6;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    background: #2563eb;
+    color: white;
+    text-decoration: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    transition: background 0.3s;
+  }
+
+  .btn:hover {
+    background: #1d4ed8;
+  }
+
+  @media (max-width: 768px) {
+    #docs-hero h1 {
+      font-size: 2rem;
+    }
+    .docs-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

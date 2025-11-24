@@ -1,0 +1,210 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+	<section id="about-hero">
+		<div class="container">
+			<h1>About A.P.O.L.L.O.</h1>
+			<p>Advancing open-source projects and fostering innovation in technology.</p>
+		</div>
+	</section>
+
+	<section id="background">
+		<div class="container">
+			<h2>Our Background</h2>
+			<p>The A.P.O.L.L.O. Organization was founded with the vision of creating a hub for collaborative open-source development. We believe that by bringing together talented individuals from diverse backgrounds, we can tackle complex challenges and drive technological advancement that benefits everyone.</p>
+			<p>Our name, A.P.O.L.L.O., stands for "Advancing Projects through Open-source Leadership and Learning Opportunities," reflecting our commitment to leadership in open-source and continuous learning.</p>
+		</div>
+	</section>
+
+	<section id="mission-values">
+		<div class="container">
+			<div class="mission-values-grid">
+				<div class="mission">
+					<h2>Our Mission</h2>
+					<p>To create a collaborative environment where developers, researchers, and enthusiasts can work together on cutting-edge open-source projects that push the boundaries of technology and benefit the global community.</p>
+				</div>
+				<div class="values">
+					<h2>Our Values</h2>
+					<ul>
+						<li><strong>Openness:</strong> Transparency in all our processes and decisions.</li>
+						<li><strong>Collaboration:</strong> Working together to achieve more than we could alone.</li>
+						<li><strong>Innovation:</strong> Pushing the boundaries of what's possible.</li>
+						<li><strong>Inclusion:</strong> Welcoming contributors from all backgrounds and skill levels.</li>
+						<li><strong>Quality:</strong> Maintaining high standards in all our projects.</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="achievements">
+		<div class="container">
+			<h2>Recent Achievements</h2>
+			<div class="achievements-grid">
+				<div class="achievement">
+					<h3>50+ Active Projects</h3>
+					<p>From AI tools to web frameworks, our repositories cover a wide range of technologies.</p>
+				</div>
+				<div class="achievement">
+					<h3>1000+ Contributors</h3>
+					<p>A growing community of developers, designers, and researchers.</p>
+				</div>
+				<div class="achievement">
+					<h3>Global Impact</h3>
+					<p>Our projects have been used by organizations worldwide.</p>
+				</div>
+				<div class="achievement">
+					<h3>Educational Outreach</h3>
+					<p>Workshops, tutorials, and mentorship programs for aspiring developers.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="join-us">
+		<div class="container">
+			<h2>Join Us</h2>
+			<p>Whether you're a seasoned developer or just starting out, there's a place for you in our community. Contribute to existing projects, propose new ideas, or help with documentation and community management.</p>
+			<a href="/contributing" class="btn primary">Start Contributing</a>
+		</div>
+	</section>
+</Layout>
+
+<style>
+	#about-hero {
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		color: white;
+		padding: 4rem 0;
+		text-align: center;
+	}
+
+	#about-hero .container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 1rem;
+	}
+
+	#about-hero h1 {
+		font-size: 3rem;
+		margin: 0 0 1rem 0;
+	}
+
+	#about-hero p {
+		font-size: 1.25rem;
+		margin: 0;
+	}
+
+	#background, #mission-values, #achievements, #join-us {
+		padding: 4rem 0;
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 1rem;
+	}
+
+	h2 {
+		font-size: 2.5rem;
+		margin: 0 0 2rem 0;
+		color: #111827;
+		text-align: center;
+	}
+
+	p {
+		font-size: 1.125rem;
+		color: #4b5563;
+		line-height: 1.6;
+	}
+
+	.mission-values-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 4rem;
+		margin-top: 2rem;
+	}
+
+	.mission h2, .values h2 {
+		text-align: left;
+		margin-bottom: 1rem;
+	}
+
+	.values ul {
+		list-style: none;
+		padding: 0;
+	}
+
+	.values li {
+		margin-bottom: 1rem;
+		font-size: 1.125rem;
+	}
+
+	.values strong {
+		color: #111827;
+	}
+
+	.achievements-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+		gap: 2rem;
+		margin-top: 2rem;
+	}
+
+	.achievement {
+		background: white;
+		padding: 2rem;
+		border-radius: 0.5rem;
+		box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+		text-align: center;
+	}
+
+	.achievement h3 {
+		margin: 0 0 1rem 0;
+		color: #111827;
+	}
+
+	.achievement p {
+		margin: 0;
+		color: #4b5563;
+	}
+
+	#join-us {
+		background: #f9fafb;
+		text-align: center;
+	}
+
+	#join-us p {
+		max-width: 600px;
+		margin: 0 auto 2rem;
+	}
+
+	.btn {
+		display: inline-block;
+		padding: 0.75rem 1.5rem;
+		text-decoration: none;
+		border-radius: 0.5rem;
+		font-weight: 600;
+		transition: all 0.3s;
+		background: #2563eb;
+		color: white;
+	}
+
+	.btn:hover {
+		background: #1d4ed8;
+	}
+
+	@media (max-width: 768px) {
+		#about-hero h1 {
+			font-size: 2rem;
+		}
+		.mission-values-grid {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+		}
+		.achievements-grid {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>
