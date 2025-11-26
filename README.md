@@ -22,12 +22,8 @@ This homepage serves as the central hub for:
 The homepage leverages modern web development tools for optimal performance and maintainability:
 
 - **Astro** (97.5%)
-  - Lightning-fast static site generation
-  - Zero JavaScript overhead by default
 - **JavaScript** (2.1%)
-  - Interactive components and enhancements
 - **Docker** (0.4%)
-  - Containerized deployment for easy hosting & CI/CD
 
 ---
 
