@@ -21,9 +21,9 @@ This homepage serves as the central hub for:
 
 The homepage leverages modern web development tools for optimal performance and maintainability:
 
-- **Astro** (97.5%)
-- **JavaScript** (2.1%)
-- **Docker** (0.4%)
+- **Astro**
+- **JavaScript**
+- **Docker**
 
 ---
 
