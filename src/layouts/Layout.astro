@@ -1,21 +1,49 @@
 ---
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { SEO } from 'astro-seo';
+import { AstroFont } from 'astro-font';
 ---
 
 <!doctype html>
 <html lang="en">
- 	<head>
- 		<meta charset="UTF-8" />
- 		<meta name="viewport" content="width=device-width" />
- 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
- 		<link rel="preconnect" href="https://fonts.googleapis.com">
- 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- 		<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
- 		<meta name="generator" content={Astro.generator} />
- 		<title>A.P.O.L.L.O. Organization</title>
- 		<meta name="description" content="A group of friends passionate about building, learning, and experimenting with code." />
-	</head>
+  	<head>
+  		<meta charset="UTF-8" />
+  		<meta name="viewport" content="width=device-width" />
+  		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  		<meta name="generator" content={Astro.generator} />
+  		<SEO
+  			title="A.P.O.L.L.O. Organization"
+  			description="A group of friends passionate about building, learning, and experimenting with code."
+  			openGraph={{
+  				basic: {
+  					title: "A.P.O.L.L.O. Organization",
+  					type: "website",
+  					image: "/favicon.svg",
+  					url: Astro.url.href
+  				},
+  				optional: {
+  					siteName: "A.P.O.L.L.O."
+  				}
+  			}}
+  			twitter={{
+  				creator: "@apollo_org"
+  			}}
+  		/>
+  		<AstroFont
+  			config={[
+  				{
+  					name: "JetBrains Mono",
+  					src: [],
+  					preload: true,
+  					display: "swap",
+  					fallback: "monospace",
+  					fetch: true,
+  					googleFontsURL: "https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap"
+  				}
+  			]}
+  		/>
+  	</head>
 	<body>
 		<Header />
 		<main>
