@@ -32,7 +32,7 @@ const teams = [...new Set(team.map(member => member.team))];
       <div class="team-grid" id="team-grid">
         {team.map(member => (
           <div class="team-card" data-role={member.role} data-team={member.team} data-name={member.name.toLowerCase()}>
-            <img src={member.avatar} alt={member.name} class="avatar">
+            <img src={`${member.avatar}&s=100`} alt={member.name} class="avatar" loading="lazy">
             <h3><a href={`/team/${member.id}`}>{member.name}</a></h3>
             <p class="role">{member.role}</p>
             <p class="bio">{member.bio}</p>

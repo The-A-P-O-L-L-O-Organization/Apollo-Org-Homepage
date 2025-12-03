@@ -15,7 +15,7 @@ const { member } = Astro.props;
 <Layout>
   <section id="member-hero">
     <div class="container">
-      <img src={member.avatar} alt={member.name} class="avatar">
+      <img src={`${member.avatar}&s=150`} alt={member.name} class="avatar" loading="lazy">
       <h1>{member.name}</h1>
       <p class="role">{member.role}</p>
       <p class="team">Team: {member.team}</p>
