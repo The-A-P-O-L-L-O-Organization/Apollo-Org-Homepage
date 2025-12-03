@@ -8,7 +8,7 @@ try {
   if (response.ok) {
     const repos = await response.json();
     if (Array.isArray(repos) && repos.length > 0) {
-      activeRepos = repos.filter(repo => !repo.archived && !repo.private).sort((a, b) => b.stargazers_count - a.stargazers_count);
+      activeRepos = repos.filter(repo => !repo.archived && !repo.private && repo.name !== '.github' && repo.name !== 'Potato').sort((a, b) => b.stargazers_count - a.stargazers_count);
     }
   }
 } catch (error) {
