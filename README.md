@@ -37,11 +37,11 @@ To run the homepage locally and contribute, follow these steps:
    ```
 2. **Install dependencies** (requires [Node.js](https://nodejs.org/)):
    ```sh
-   npm install
+   pnpm install
    ```
 3. **Start the development server:**
    ```sh
-   npm run dev
+   pnpm dev
    ```
 4. **Open** [http://localhost:3000](http://localhost:3000) in your browser.
 
