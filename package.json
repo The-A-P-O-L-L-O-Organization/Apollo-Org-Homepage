@@ -11,8 +11,13 @@
   },
   "dependencies": {
     "@astrojs/rss": "^4.0.18",
-    "astro": "^6.0.2",
+    "astro": "^6.1.1",
     "astro-font": "^1.1.0",
     "astro-seo": "^1.1.0"
+  },
+  "pnpm": {
+    "overrides": {
+      "yaml": "^2.8.3"
+    }
   }
 }
