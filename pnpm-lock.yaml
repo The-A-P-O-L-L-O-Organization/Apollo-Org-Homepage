@@ -7,7 +7,7 @@ settings:
 overrides:
   yaml: ^2.8.3
   fast-xml-parser: '>=4.8.0'
-  picomatch: '>=2.3.1'
+  picomatch: '>=2.3.2'
   h3: '>=1.14.0'
   svgo: '>=3.3.0'
 
@@ -884,7 +884,7 @@ packages:
     resolution: {integrity: sha512-tIbYtZbucOs0BRGqPJkshJUYdL+SDH7dVM8gjy+ERp3WAUjLEFJE+02kanyHtwjWOnwrKYBiwAmM0p4kLJAnXg==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
-      picomatch: '>=2.3.1'
+      picomatch: '>=2.3.2'
     peerDependenciesMeta:
       picomatch:
         optional: true
