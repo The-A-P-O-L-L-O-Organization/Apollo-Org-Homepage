@@ -23,8 +23,8 @@ importers:
         specifier: ^7.2.6
         version: 7.2.6(@emnapi/core@1.11.1)(@emnapi/runtime@1.11.1)(yaml@2.8.3)
       astro-font:
-        specifier: ^1.1.0
-        version: 1.1.0
+        specifier: ^1.2.0
+        version: 1.2.0
       astro-seo:
         specifier: ^1.1.0
         version: 1.1.0(prettier@3.8.1)(typescript@5.9.3)
@@ -775,8 +775,8 @@ packages:
     resolution: {integrity: sha512-COROpnaoap1E2F000S62r6A60uHZnmlvomhfyT2DlTcrY1OrBKn2UhH7qn5wTC9zMvD0AY7csdPSNwKP+7WiQw==}
     engines: {node: '>= 0.4'}
 
-  astro-font@1.1.0:
-    resolution: {integrity: sha512-hj1A0MkaJTeaArBpf1m9s4Nxu1Bn9h0QiEPeR9Dfjle25pT4CH4higzuadWzCRSvhGO2SzbM11YwZEF+cmLDxg==}
+  astro-font@1.2.0:
+    resolution: {integrity: sha512-Jcgag+vUQQIlw/RBMrQ+lsDc+m0Weyjke3+ilK9lWIJVkTn24jUKBS0FE7Zi+ojDMVSyasJ8HEmHzKizJL3SkA==}
 
   astro-seo@1.1.0:
     resolution: {integrity: sha512-G6LDNDyga30o+52v58jU7C35n3cORUzk7RSuY+xf/ZRbW6JiNplyaOO1VoYVKO+xzYNaBcxqNln2RFRR/wgJNQ==}
@@ -2350,7 +2350,7 @@ snapshots:
 
   aria-query@5.3.2: {}
 
-  astro-font@1.1.0: {}
+  astro-font@1.2.0: {}
 
   astro-seo@1.1.0(prettier@3.8.1)(typescript@5.9.3):
     dependencies:
